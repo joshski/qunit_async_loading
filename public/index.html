@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+  	<meta charset="utf-8" />
+    <title>QUnit Tests Defined In Timeouts</title>
+		<script type="text/javascript" src="qunit.js"></script>
+		<link rel="stylesheet" href="qunit.css" type="text/css" />
+</head>
+<body>
+
+    <script type="text/javascript">
+
+			setTimeout(function() {
+				test("sync, pass after 2 seconds", function() {
+					ok(true);
+				});
+			}, 2000);
+			
+			setTimeout(function() {
+				test("sync, fail after 4 seconds", function() {
+					ok(false);
+				});
+			}, 4000);
+			
+			setTimeout(function() {
+				asyncTest("async, define after 1 second, pass after 3 seconds", function() {
+					expect(1);
+					setTimeout(function() {
+						start();
+						ok(true);
+					}, 2000);
+				});
+			}, 1000);
+			
+			setTimeout(function() {
+				asyncTest("async, define after 1 second, fail after 3 seconds", function() {
+					expect(1);
+					setTimeout(function() {
+						start();
+						ok(false);
+					}, 2000);
+				});
+			}, 1000);
+			
+    </script>
+
+    <h1 id="qunit-header">QUnit Tests Defined In Timeouts</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+    <div id="qunit-fixture"></div>
+</body>
+</html>
