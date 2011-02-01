@@ -24,20 +24,18 @@
       
       setTimeout(function() {
         asyncTest("async, define after 1 second, pass after 3 seconds", function() {
-          expect(1);
           setTimeout(function() {
-            start();
             ok(true);
+            start();
           }, 2000);
         });
       }, 1000);
       
       setTimeout(function() {
         asyncTest("async, define after 1 second, fail after 3 seconds", function() {
-          expect(1);
           setTimeout(function() {
-            start();
             ok(false);
+            start();
           }, 2000);
         });
       }, 1000);
